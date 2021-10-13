@@ -1,0 +1,31 @@
+body{
+    margin: 2px;
+    height: 100%;
+}
+.header{
+    padding: 15px 0;
+    background-color: #ffffff;
+}
+.header-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.logo-content{
+    display: flex;
+    align-items: center;
+}
+.logo-content-img{
+    order: 0px solid #5dd667;
+}
+
+.emp-text{
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    text-transform: capitalize;
+    color: green;
+}
+.emp-payroll{
+    color: #4b6174;
+}
