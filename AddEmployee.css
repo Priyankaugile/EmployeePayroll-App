@@ -92,3 +92,32 @@ body{
 .profile{
     width: 40px;
 }
+
+.label-text1{
+    padding: 15px 60px 12px 0;
+    font-size: 20px;
+    opacity: 1;
+}
+
+.gender-radio-content{
+    display: inline-block;
+    padding: 15px 15px 10px;   
+}
+
+.label-text2{
+    padding: 12px 40px 12px 0px;
+    display: inline-block;
+    font-size: 20px;
+    opacity: 1;
+}
+
+.department-checkbox-content{
+    display: inline-block;
+    padding: 0px 13px 14px 0px;   
+}
+
+.label-text3{
+    padding: 15px 85px 12px 0px;
+    font-size: 20px;
+    opacity: 1;
+}
