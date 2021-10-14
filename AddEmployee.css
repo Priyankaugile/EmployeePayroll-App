@@ -65,7 +65,7 @@ body{
     color: green;
 }
 .lable {
-    padding: 12px 12px 12px 0;
+    padding: 12px 90px 12px 0;
     display: inline-block;
     font-size: 20px;
     opacity: 1;
@@ -77,4 +77,18 @@ body{
     color: #ccc;
     border-radius: 5px;
     resize: vertical;
+}
+
+.lable-text{
+    font-size: 20px;
+}
+
+.profile-radio-content{
+    padding: 15px 15px 15px 25px;
+    display: inline-block;
+    font-size: 20px;
+    opacity: 1;
+}
+.profile{
+    width: 40px;
 }
