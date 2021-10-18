@@ -27,15 +27,15 @@ class EmployeePayrollData {
     get getDepartment() {
         return this.department;
     }
-
+    
     get getSalary() {
         return this.salary;
     }
-
+    
     get getStartDate() {
         return this.startDate;
     }
-
+    
     get getNotes() {
         return this.notes;
     }
@@ -85,8 +85,7 @@ class EmployeePayrollData {
 
     toString() { 
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const empDate = this.startDate === undefined ? "undefined" :
-                        new Date(this.startDate).toLocaleDateString("en-US", options);
+        const empDate = new Date(this.startDate).toLocaleDateString("en-US", options);
         return " Name: " + this.name + "\n Gender: " + this.gender + "\n Department: " + this.department + "\n Salary: " + this.salary + "\n Start Date: " + empDate + "\n Notes: " + this.notes;
     }
 }
@@ -98,24 +97,16 @@ salary.oninput = function() {
     salaryOutput.textContent = salary.value;
 };
 
-const name = document.querySelector('#name');
-const nameError = document.querySelector('.name-error');
-name.addEventListener('input', function() {
-    let nameRegex = RegExp('^[A-Z][a-z A-Z]{2,}$');
-    if(nameRegex.test(name.value))
-        nameError.textContent = "";
-    else
-        nameError.textContent = "Name is incorrect";
-});
-
 function save() {
     try {
         let name = document.querySelector('#name').value;
         let gender = document.querySelector('input[name=gender]:checked').value;
         let deptList = new Array();
         let departments = document.querySelectorAll('input[name=department]:checked');
+        if(departments.length == 0)
+            throw "Select at least one department"
         for (let i = 0; i < departments.length; i++) {
-            deptList.push(department[i].value);
+            deptList.push(departments[i].value);
         }
         let salary = document.querySelector('#salary').value;
         let year = document.querySelector('#year').value;
@@ -123,7 +114,13 @@ function save() {
         let day = document.querySelector('#day').value;
         let startDate = new Date(year, month-1, day);
         let notes = document.querySelector('#notes').value;
-        let newEmployee = new EmployeePayrollData(name, gender, deptList, salary, startDate, notes);
+        let newEmployee = new EmployeePayrollData();
+        newEmployee.setName = name;
+        newEmployee.setGender = gender;
+        newEmployee.setDepartment = deptList;
+        newEmployee.setSalary = salary;
+        newEmployee.setStartDate = startDate;
+        newEmployee.setNotes = notes;
         alert(newEmployee);
     } catch (error) {
         alert(error);
