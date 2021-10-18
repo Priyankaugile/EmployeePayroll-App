@@ -41,7 +41,12 @@ class EmployeePayrollData {
     }
 
     set setName(name) {
+        let nameRegex = RegExp('^[A-Z][a-z A-Z]{2,}$');
+        if(name.match(nameRegex)){
         this.name = name;
+        }
+        else 
+        throw "Name: " + name + " is incorrect";   
     }
 
     set setDepartment(department) {
@@ -57,7 +62,21 @@ class EmployeePayrollData {
     }
 
     set setStartDate(startDate) {
-          this.startDate = startDate;
+        if(startDate == "Invalid Date")
+            throw "Date should neither be empty nor be invalid";
+        let presentDate = new Date();
+        let year = presentDate.getFullYear();
+        let month = presentDate.getMonth();
+        let date = presentDate.getDate();
+        presentDate = new Date(year, month, date);
+        let differenceInTime = presentDate.getTime() - startDate.getTime(); 
+        let differenceInDays = differenceInTime / (1000 * 60 * 60 * 24);
+        if (startDate  > presentDate)
+            throw "Start Date should not be the future date";
+        else if(differenceInDays <=30)
+            this.startDate = startDate;
+        else
+            throw "Start Date should be within 30 days of joining";
     }
 
     set setNotes(notes) {
