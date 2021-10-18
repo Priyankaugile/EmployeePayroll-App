@@ -76,7 +76,7 @@ class EmployeePayrollData {
         else if(differenceInDays <=30)
             this.startDate = startDate;
         else
-            throw "Start Date should be within 30 days of joining";
+            throw "Invalid Date";
     }
 
     set setNotes(notes) {
@@ -97,32 +97,4 @@ salary.oninput = function() {
     salaryOutput.textContent = salary.value;
 };
 
-function save() {
-    try {
-        let name = document.querySelector('#name').value;
-        let gender = document.querySelector('input[name=gender]:checked').value;
-        let deptList = new Array();
-        let departments = document.querySelectorAll('input[name=department]:checked');
-        if(departments.length == 0)
-            throw "Select at least one department"
-        for (let i = 0; i < departments.length; i++) {
-            deptList.push(departments[i].value);
-        }
-        let salary = document.querySelector('#salary').value;
-        let year = document.querySelector('#year').value;
-        let month = document.querySelector('#month').value;
-        let day = document.querySelector('#day').value;
-        let startDate = new Date(year, month-1, day);
-        let notes = document.querySelector('#notes').value;
-        let newEmployee = new EmployeePayrollData();
-        newEmployee.setName = name;
-        newEmployee.setGender = gender;
-        newEmployee.setDepartment = deptList;
-        newEmployee.setSalary = salary;
-        newEmployee.setStartDate = startDate;
-        newEmployee.setNotes = notes;
-        alert(newEmployee);
-    } catch (error) {
-        alert(error);
-    }
-}
+
